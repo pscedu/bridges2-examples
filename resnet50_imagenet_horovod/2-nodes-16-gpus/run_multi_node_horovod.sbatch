@@ -5,7 +5,6 @@
 #SBATCH --nodes=2                                               # Number of nodes
 #SBATCH --gres=gpu:v100-32:8                                    # Number of GPUs per node, including GPU type
 #SBATCH --account=pscstaff                                      # Allocation to use resources from
-#SBATCH --output=tf_horovod_two_node_imagenent_bz_128_r5.out    # Output file name
 
 cp ${0} slurm-${SLURM_JOB_ID}.sbatch
 
@@ -18,8 +17,8 @@ module load openmpi
 ####
 # Use sacct to get the gres resources allocated
 TRES_OUTPUT=$(sacct -j $SLURM_JOB_ID --format=AllocTRES --allocations --noheader -P)
-# Use scontrol to get the list of nodes allocated
-NODELIST=$(scontrol show hostnames $SLURM_JOB_NODELIST)
+# Use sacct to get the list of nodes allocated
+NODELIST=$(sacct -j $SLURM_JOB_ID --format=nodelist --allocations --noheader -P)
 
 # Get the comma-separated list of nodes assigned to the job with GPU counts
 export NODELIST_WITH_GPUS="$(python3 - ${NODELIST} ${TRES_OUTPUT} <<'EOF'
@@ -38,8 +37,13 @@ for tres_chunk in tres_chunks:
 
 gpus_per_node = int(total_gpus / total_nodes)
 
-for node in node_list.split(';'):
-    print(f'{node}:{gpus_per_node}')
+node_list = node_list.split(',')
+if len(node_list) > 1:
+    list_aggregation = [f'{node}:{gpus_per_node}' for node in node_list]
+    print(",".join(list_aggregation))
+else:
+    for node in node_list:
+        print(f'{node}:{gpus_per_node}')
 
 EOF
 )"
