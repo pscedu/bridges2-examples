@@ -582,3 +582,53 @@ singularity exec --nv --bind /ocean/projects/pscstaff/mwang7,/ocean/datasets /oc
 #        [5] Tesla V100-SXM2-16GB | 36°C,   0 % | 15425 / 16384 MB | julian(15422M)   a   [5] Tesla V100-SXM2-16GB | 38°C,   0 % | 15425 / 16384 MB | julian(15422M)
 #        [6] Tesla V100-SXM2-16GB | 32°C,   0 % | 15309 / 16384 MB | julian(15306M)   a   [6] Tesla V100-SXM2-16GB | 33°C,   0 % | 15309 / 16384 MB | julian(15306M)
 #        [7] Tesla V100-SXM2-16GB | 34°C,   0 % | 15337 / 16384 MB | julian(15334M)   a   [7] Tesla V100-SXM2-16GB | 36°C,   0 % | 15337 / 16384 MB | julian(15334M)
+#
+#        272/272 [==============================] - ETA: 0s - loss: 7.0031Iter #0: 33.6 img/sec per GPU
+#        Iter #0: 33.6 img/sec per GPU
+#        Iter #0: 33.6 img/sec per GPU
+#        Iter #0: 33.6 img/sec per GPU
+#        Iter #0: 33.6 img/sec per GPU
+#        Iter #0: 33.6 img/sec per GPU
+#        Iter #0: 33.6 img/sec per GPU
+#        Iter #0: 33.6 img/sec per GPU
+#        Iter #0: 33.5 img/sec per GPU
+#        Iter #0: 33.5 img/sec per GPU
+#        Iter #0: 33.5 img/sec per GPU
+#        Iter #0: 33.5 img/sec per GPU
+#        Iter #0: 33.5 img/sec per GPU
+#        Iter #0: 33.5 img/sec per GPU
+#        Iter #0: 33.5 img/sec per GPU
+#        Iter #0: 33.5 img/sec per GPU
+#        272/272 [==============================] - 1037s 3s/step - loss: 7.0030
+#        272/272 [==============================] - 1037s 3s/step - loss: 7.0030
+#        272/272 [==============================] - 1037s 3s/step - loss: 7.0030
+#        272/272 [==============================] - 1037s 3s/step - loss: 7.0030
+#        272/272 [==============================] - 1037s 3s/step - loss: 7.0030
+#        272/272 [==============================] - 1037s 3s/step - loss: 7.0030
+#        272/272 [==============================] - 1037s 3s/step - loss: 7.0030
+#        272/272 [==============================] - 1037s 3s/step - loss: 7.0030
+#        272/272 [==============================] - 1038s 3s/step - loss: 7.0030
+#        272/272 [==============================] - 1038s 3s/step - loss: 7.0030
+#        272/272 [==============================] - 1038s 3s/step - loss: 7.0030
+#        272/272 [==============================] - 1038s 3s/step - loss: 7.0030
+#        272/272 [==============================] - 1038s 3s/step - loss: 7.0030
+#        272/272 [==============================] - 1038s 3s/step - loss: 7.0030
+#        272/272 [==============================] - 1038s 3s/step - loss: 7.0030
+#        272/272 [==============================] - 1038s 3s/step - loss: 7.0030
+#        Epoch 2/2
+#        Epoch 2/2
+#        Epoch 2/2
+#        Epoch 2/2
+#        Epoch 2/2
+#        Epoch 2/2
+#        Epoch 2/2
+#        Epoch 2/2
+#        Epoch 2/2
+#        Epoch 2/2
+#        Epoch 2/2
+#        Epoch 2/2
+#        Epoch 2/2
+#        Epoch 2/2
+#        Epoch 2/2
+#        Epoch 2/2
+#         24/272 [=>............................] - ETA: 4:00 - loss: 6.7237
