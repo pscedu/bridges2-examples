@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH -p GPU
 #SBATCH -N 2 
-#SBATCH --gpus=v100-32:16              # request two nodes, each with 8 GPUs. So 16 GPUs in total. 
+#SBATCH --gpus=v100-32:8 
 #SBATCH -J tf_horovod_multi_nodes      # Name of the job
 #SBATCH --account=xxxxxxx              # Please change it to your allocation ID
 
