@@ -632,3 +632,68 @@ singularity exec --nv --bind /ocean/projects/pscstaff/mwang7,/ocean/datasets /oc
 #        Epoch 2/2
 #        Epoch 2/2
 #         24/272 [=>............................] - ETA: 4:00 - loss: 6.7237
+#
+#        272/272 [==============================] - ETA: 0s - loss: 6.5685Iter #1: 112.0 img/sec per GPU
+#        Iter #1: 112.0 img/sec per GPU
+#        Iter #1: 112.0 img/sec per GPU
+#        Iter #1: 112.0 img/sec per GPU
+#        Iter #1: 112.0 img/sec per GPU
+#        Iter #1: 112.0 img/sec per GPU
+#        Iter #1: 112.0 img/sec per GPU
+#        Iter #1: 112.0 img/sec per GPU
+#        272/272 [==============================] - 311s 994ms/step - loss: 6.5685
+#        Iter #1: 112.0 img/sec per GPU
+#        272/272 [==============================] - 311s 994ms/step - loss: 6.5685
+#        272/272 [==============================] - 311s 994ms/step - loss: 6.5685
+#        272/272 [==============================] - 311s 994ms/step - loss: 6.5685
+#        272/272 [==============================] - 311s 994ms/step - loss: 6.5685
+#        272/272 [==============================] - 311s 994ms/step - loss: 6.5685
+#        272/272 [==============================] - 311s 994ms/step - loss: 6.5685
+#        Iter #1: 112.0 img/sec per GPU
+#        272/272 [==============================] - 311s 994ms/step - loss: 6.5685
+#        Iter #1: 125.8 img/sec per GPU
+#        Iter #1: 112.0 img/sec per GPU
+#        Iter #1: 112.0 img/sec per GPU
+#        Iter #1: 112.0 img/sec per GPU
+#        Iter #1: 126.1 img/sec per GPU
+#        Iter #1: 112.0 img/sec per GPU
+#        272/272 [==============================] - 311s 994ms/step - loss: 6.5685
+#        272/272 [==============================] - 311s 994ms/step - loss: 6.5685
+#        272/272 [==============================] - 277s 994ms/step - loss: 6.5685
+#        272/272 [==============================] - 276s 994ms/step - loss: 6.5685
+#        272/272 [==============================] - 311s 994ms/step - loss: 6.5685
+#        272/272 [==============================] - 311s 994ms/step - loss: 6.5685
+#        272/272 [==============================] - 311s 994ms/step - loss: 6.5685
+#        272/272 [==============================] - 311s 994ms/step - loss: 6.5685
+#        Img/sec per GPU: 112.0 +-0.0
+#        Total img/sec on 16 GPU(s): 1791.2 +-0.0
+#        Img/sec per GPU: 112.0 +-0.0
+#        Total img/sec on 16 GPU(s): 1791.2 +-0.0
+#        Img/sec per GPU: 112.0 +-0.0
+#        Total img/sec on 16 GPU(s): 1791.3 +-0.0
+#        Img/sec per GPU: 112.0 +-0.0
+#        Img/sec per GPU: 112.0 +-0.0
+#        Total img/sec on 16 GPU(s): 1791.4 +-0.0
+#        Img/sec per GPU: 112.0 +-0.0
+#        Total img/sec on 16 GPU(s): 1791.3 +-0.0
+#        Img/sec per GPU: 112.0 +-0.0
+#        Total img/sec on 16 GPU(s): 1791.3 +-0.0
+#        Total img/sec on 16 GPU(s): 1791.2 +-0.0
+#        Img/sec per GPU: 112.0 +-0.0
+#        Total img/sec on 16 GPU(s): 1791.2 +-0.0
+#        Img/sec per GPU: 125.8 +-0.0
+#        Total img/sec on 16 GPU(s): 2012.9 +-0.0
+#        Img/sec per GPU: 112.0 +-0.0
+#        Total img/sec on 16 GPU(s): 1791.2 +-0.0
+#        Img/sec per GPU: 112.0 +-0.0
+#        Img/sec per GPU: 112.0 +-0.0
+#        Total img/sec on 16 GPU(s): 1791.2 +-0.0
+#        Img/sec per GPU: 112.0 +-0.0
+#        Total img/sec on 16 GPU(s): 1791.4 +-0.0
+#        Img/sec per GPU: 126.1 +-0.0
+#        Total img/sec on 16 GPU(s): 2017.2 +-0.0
+#        Total img/sec on 16 GPU(s): 1791.3 +-0.0
+#        Img/sec per GPU: 112.0 +-0.0
+#        Total img/sec on 16 GPU(s): 1791.2 +-0.0
+#        Img/sec per GPU: 112.0 +-0.0
+#        Total img/sec on 16 GPU(s): 1791.2 +-0.0
