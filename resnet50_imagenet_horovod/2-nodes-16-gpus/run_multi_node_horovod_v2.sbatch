@@ -2,7 +2,6 @@
 #SBATCH -p GPU
 #SBATCH -t 30:00
 #SBATCH -N 2
-#SBATCH --res=PSC 
 #SBATCH --gpus=v100-32:16
 #SBATCH --nodelist v007,v005
 #SBATCH -J tf-gpus
