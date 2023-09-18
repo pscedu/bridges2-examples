@@ -30,8 +30,8 @@ Optional arguments:
   -imagenet                Using Imagenet dataset for train or mock data generated with random pixels (default: False). 
                 
 ```
-
-## Interactive Session
+## Single Node
+### Interactive Session
 Here we give example commands of running this example with 4 GPUs (node type not specified) with the GPU-shared partition for an hour:
 
 #### With `singularity exec`
@@ -46,10 +46,34 @@ interact --partition GPU-shared --gres=gpu:v100:4
 singularity shell --nv /ocean/containers/ngc/tensorflow/tensorflow_latest.sif
 horovodrun -np 4 tf_horovod.py
 ```
-## Batch Mode
+### Batch Mode
 After modifying the script to include the correct allocation account and working directory, submit the batch job by typing:
 ```bash
 sbatch tf_horovod_single_node.sbatch
+```
+
+## Multi-nodes
+### Interactive Session
+Here we give example commands of running this example with 2 GPU nodes (16 GPUs) with the GPU partition for an hour:
+
+#### With `singularity exec`
+```bash
+interact --partition GPU --gres=gpu:v100:8
+mpirun -np 9 -H node_1:8,node_2:1 -bind-to none -map-by slot -x NCCL_DEBUG=INFO -x LD_LIBRARY_PATH -x PATH -mca pml ob1 -mca btl ^openib singularity exec --nv /ocean/containers/ngc/tensorflow/tensorflow_latest.sif python3 tf_horovod.py
+```
+Please replace `node_1` and `node_2` with the node names (e.g., v005) assigned for your sessions.
+
+#### With `singularity shell`
+```bash
+interact --partition GPU-shared --gres=gpu:v100:4
+singularity shell --nv /ocean/containers/ngc/tensorflow/tensorflow_latest.sif
+mpirun -np 9 -H node_1:8,node_2:1 -bind-to none -map-by slot -x NCCL_DEBUG=INFO -x LD_LIBRARY_PATH -x PATH -mca pml ob1 -mca btl ^openib python3 tf_horovod.py
+```
+Please replace `node_1` and `node_2` with the node names (e.g., v005) assigned for your sessions.
+### Batch Mode
+After modifying the script to include the correct allocation account and working directory, submit the batch job by typing:
+```bash
+sbatch tf_horovod_multi_nodes.sbatch
 ```
 
 
