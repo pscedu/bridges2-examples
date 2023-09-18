@@ -37,14 +37,14 @@ Here we give example commands of running this example with 4 GPUs (node type not
 #### With `singularity exec`
 ```bash
 interact --partition GPU-shared --gres=gpu:v100:4
-singularity exec --nv /ocean/containers/ngc/tensorflow/tensorflow_latest.sif python tensorflow_dist.py
+singularity exec --nv /ocean/containers/ngc/tensorflow/tensorflow_latest.sif python3 tensorflow_dist.py
 ```
 
 #### With `singularity shell`
 ```bash
 interact --partition GPU-shared --gres=gpu:v100:4
 singularity shell --nv /ocean/containers/ngc/tensorflow/tensorflow_latest.sif
-python tensorflow_dist.py
+python3 tensorflow_dist.py
 ```
 
 #### With AI module
