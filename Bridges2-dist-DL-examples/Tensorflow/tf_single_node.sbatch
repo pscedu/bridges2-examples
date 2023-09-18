@@ -10,8 +10,8 @@ cd /ocean/projects/groupname/username/path-to-directory
 
 
 #running with a NGC container
-singularity exec --nv /ocean/containers/ngc/tensorflow/tensorflow_latest.sif python tensorflow_dist.py
+singularity exec --nv /ocean/containers/ngc/tensorflow/tensorflow_latest.sif python3 tensorflow_dist.py
 
 #running with AI module
 #module load AI/tensorflow_23.02-2.10.0-py3 
-#python tensorflow_dist.py
+#python3 tensorflow_dist.py
