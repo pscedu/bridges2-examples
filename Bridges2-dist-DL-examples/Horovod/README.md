@@ -1,6 +1,6 @@
 # An example of Running Horovod on Bridges-2
 
-Here we show examples of running Horovod with Tensorflow and PyTorch.
+Here we show examples of running Horovod with [Tensorflow](#Tensorflow) and [PyTorch](#PyTorch).
 This examples that train ResNet50 models with either Imagenet/Imagenet-mini dataset or mock images generated with random pixels.
 A slurm script is included to show how to set up the environment and structure the slurm script for running on Bridges-2 GPU nodes.
 
