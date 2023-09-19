@@ -4,6 +4,7 @@ import torchvision.transforms as transforms
 import torch.distributed as dist
 from torchvision.models import resnet50#, ResNet50_Weights
 from torch.nn.parallel import DistributedDataParallel as DDP
+from torch.utils.data.distributed import DistributedSampler
 from tqdm import tqdm
 import time
 
