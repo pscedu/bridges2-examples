@@ -9,4 +9,4 @@ set -x
 cd /ocean/projects/groupname/username/path-to-directory
 
 #running with a NGC container
-singularity exec --nv /ocean/containers/ngc/tensorflow/tensorflow_latest.sif horovodrun -np 4 tf_horovod.py
+singularity exec --nv /ocean/containers/ngc/tensorflow/tensorflow_latest.sif horovodrun -np 4 python3 tf_horovod.py
