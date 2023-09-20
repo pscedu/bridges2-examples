@@ -76,7 +76,7 @@ optimizer = hvd.DistributedOptimizer(optimizer, named_parameters=model.named_par
 hvd.broadcast_parameters(model.state_dict(), root_rank=0)
 
 # Train the model...
-for epoch in range(num_epochs):
+for epoch in range(epoch_num):
     for i, data in enumerate(tqdm(train_loader)):
         # Move input and label tensors to the device
         inputs, labels = data
