@@ -15,18 +15,19 @@ rank = dist.get_rank()
 print(f"Start running basic DDP example on rank {rank}.\n")
 
 parser = argparse.ArgumentParser(description='Input values.')
-parser.add_argument('--nw', type=int, default=5, help='number of workers in dataloader')
-parser.add_argument('--bz', type=int, default=128, help='batch size')
-parser.add_argument('--image_size', type=int, default=128, help='image size')
-parser.add_argument('--mp', default=False, help='Mixed Precision Training')
-parser.add_argument('--num_epochs', type=int, default=5, help='Number of training epochs')
+parser.add_argument('-nw', type=int, default=5, help='number of workers in dataloader')
+parser.add_argument('-bz', type=int, default=64, help='Batch size')
+parser.add_argument('-image_size', type=int, default=128, help='Image size')
+parser.add_argument('-epoch_num', type=int, default=3, help='Number of training epochs')
+parser.add_argument('-mp', action='store_true', help='Mixed Precision Training')
+parser.add_argument('-imagenet', action='store_true', help='Mixed Precision Training')
 
 args = parser.parse_args()
 batch_size = args.bz
 n_workers = args.nw
 image_size = args.image_size
 mixed_precision = args.mp
-num_epochs = args.num_epochs
+epoch_num = args.epoch_num
 if rank == 0:
     print('n_workers=',n_workers)
     print('batch size=',batch_size)
@@ -49,7 +50,7 @@ train_dataset = torchvision.datasets.ImageFolder(
     root='/direcotry/to/imagenet-mini/train',
     transform=transform
 )
-train_sampler = DistributedSampler(dataset=train_dataset, shuffle=True)
+train_sampler = DistributedSampler(dataset=train_dataset, num_replicas=torch.cuda.device_count(), rank=rank,shuffle=True)
 train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=batch_size, num_workers=n_workers,pin_memory=True,sampler=train_sampler)
 
 # Load the ResNet50 model
@@ -67,7 +68,7 @@ criterion = torch.nn.CrossEntropyLoss()
 optimizer = torch.optim.Adam(ddp_model.parameters(), lr=learning_rate)
 
 # Train the model...
-for epoch in range(num_epochs):
+for epoch in range(epoch_num):
     train_loader.sampler.set_epoch(epoch)
     for i, data in enumerate(tqdm(train_loader)):
         # Move input and label tensors to the device
@@ -97,7 +98,7 @@ for epoch in range(num_epochs):
             optimizer.step()
 
     # Print the loss for every epoch
-    print(f'Epoch {epoch+1}/{num_epochs}, Loss: {loss.item():.4f})
+    print(f'Epoch {epoch+1}/{epoch_num}, Loss: {loss.item():.4f})
 
 
 dist.destroy_process_group()
