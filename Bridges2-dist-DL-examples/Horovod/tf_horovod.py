@@ -27,7 +27,7 @@ parser.add_argument('-bz', type=int, default=64, help='Batch size')
 parser.add_argument('-image_size', type=int, default=128, help='Image size')
 parser.add_argument('-epoch_num', type=int, default=5, help='Number of training epochs')
 parser.add_argument('-mp', action='store_true', help='Mixed Precision Training')
-parser.add_argument('-imagenet', action='store_true', help='Mixed Precision Training')
+parser.add_argument('-imagenet', action='store_true', help='Using imagenet dataset')
 
 args = parser.parse_args()
 batch_size = args.bz
@@ -59,7 +59,7 @@ if using_imagenet == True:
         image_size=(image_size, image_size),
         subset=None)
 else:
-    train_ds_input = tf.data.Dataset.from_tensor_slices((np.random.rand(2000,image_size,image_size,3), np.random.randint(1000,size=2000,dtype=tf.int64))).cache().repeat().batch(batch_size)
+    train_ds_input = tf.data.Dataset.from_tensor_slices((np.random.rand(2000,image_size,image_size,3), np.random.randint(1000,size=2000,dtype=tf.int32))).cache().repeat().batch(batch_size)
 
 #Initilize ResNet50 model
 model = tf.keras.applications.resnet50.ResNet50(
@@ -79,29 +79,6 @@ callbacks = [
     hvd.callbacks.BroadcastGlobalVariablesCallback(0),
     hvd.callbacks.MetricAverageCallback(),
 ]
-
-# Callback to calculate training throughput.
-class TimingCallback(tf.keras.callbacks.Callback):
-    def on_train_begin(self, logs=None):
-        self.img_secs = []
-
-    def on_train_end(self, logs=None):
-        img_sec_mean = np.mean(self.img_secs)
-        img_sec_conf = 1.96 * np.std(self.img_secs)
-        print('Img/sec per %s: %.1f +-%.1f' % (device, img_sec_mean, img_sec_conf))
-        print('Total img/sec on %d %s(s): %.1f +-%.1f' %
-             (hvd.size(), device, hvd.size() * img_sec_mean, hvd.size() * img_sec_conf))
-
-    def on_batch_begin(self, atchb, logs=None):
-        self.starttime = timer()
-
-    def on_batch_end(self, epoch, logs=None):
-        time = timer() - self.starttime
-        img_sec = args.bz  / time
-        self.img_secs.append(img_sec)
-
-timing = TimingCallback()
-callbacks.append(timing)
 
 # Train the model.
 model.fit(train_ds_input, epochs=epoch_num, callbacks=callbacks, batch_size=batch_size)
