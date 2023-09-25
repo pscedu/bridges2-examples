@@ -53,7 +53,7 @@ if using_imagenet == True:
         transform=transform
     )
 else:
-    train_dataset = datasets.FakeData(12811, (3, image_size, image_size), 1000, transforms.ToTensor())
+    train_dataset = torchvision.datasets.FakeData(12811, (3, image_size, image_size), 1000, transforms.ToTensor())
     
 train_sampler = DistributedSampler(dataset=train_dataset, num_replicas=torch.cuda.device_count(), rank=rank,shuffle=True)
 train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=batch_size, num_workers=n_workers,pin_memory=True,sampler=train_sampler)
