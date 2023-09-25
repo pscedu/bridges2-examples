@@ -59,16 +59,16 @@ Here we give example commands of running this example with 2 GPU nodes (16 GPUs)
 
 ##### With `singularity exec`
 ```bash
-interact --partition GPU --gres=gpu:v100:8
-mpirun -np 9 -H node_1:8,node_2:1 -bind-to none -map-by slot -x NCCL_DEBUG=INFO -x LD_LIBRARY_PATH -x PATH -mca pml ob1 -mca btl ^openib singularity exec --nv /ocean/containers/ngc/tensorflow/tensorflow_latest.sif python3 tf_horovod.py
+interact --partition GPU --nodes 2 --gres=gpu:v100:8
+mpirun -np 16 -H node_1:8,node_2:8 -bind-to none -map-by slot -x LD_LIBRARY_PATH -x PATH -mca pml ob1 -mca btl ^openib singularity exec --nv /ocean/containers/ngc/tensorflow/tensorflow_latest.sif python3 tf_horovod.py
 ```
 Please replace `node_1` and `node_2` with the node names (e.g., v005) assigned for your sessions.
 
 ##### With `singularity shell`
 ```bash
-interact --partition GPU-shared --gres=gpu:v100:4
+interact --partition GPU --nodes 2 --gres=gpu:v100:8
 singularity shell --nv /ocean/containers/ngc/tensorflow/tensorflow_latest.sif
-mpirun -np 9 -H node_1:8,node_2:1 -bind-to none -map-by slot -x NCCL_DEBUG=INFO -x LD_LIBRARY_PATH -x PATH -mca pml ob1 -mca btl ^openib python3 tf_horovod.py
+mpirun -np 16 -H node_1:8,node_2:8 -bind-to none -map-by slot -x LD_LIBRARY_PATH -x PATH -mca pml ob1 -mca btl ^openib python3 tf_horovod.py
 ```
 Please replace `node_1` and `node_2` with the node names (e.g., v005) assigned for your sessions.
 #### Batch Mode
@@ -102,13 +102,13 @@ Here we give example commands of running this example with 4 GPUs (node type not
 ##### With `singularity exec`
 ```bash
 interact --partition GPU-shared --gres=gpu:v100:4
-singularity exec --nv /ocean/containers/horovod/latest.sif horovodrun -np 4 pt_horovod.py
+singularity exec --nv /ocean/containers/horovod/horovod_latest.sif horovodrun -np 4 pt_horovod.py
 ```
 
 ##### With `singularity shell`
 ```bash
 interact --partition GPU-shared --gres=gpu:v100:4
-singularity shell --nv /ocean/containers/horovod/latest.sif
+singularity shell --nv /ocean/containers/horovod/horovod_latest.sif
 horovodrun -np 4 pt_horovod.py
 ```
 #### Batch Mode
@@ -123,16 +123,16 @@ Here we give example commands of running this example with 2 GPU nodes (16 GPUs)
 
 ##### With `singularity exec`
 ```bash
-interact --partition GPU --gres=gpu:v100:8
-mpirun -np 9 -H node_1:8,node_2:1 -bind-to none -map-by slot -x NCCL_DEBUG=INFO -x LD_LIBRARY_PATH -x PATH -mca pml ob1 -mca btl ^openib singularity exec --nv /ocean/containers/horovod/latest.sif python3 pt_horovod.py
+interact --partition GPU --nodes 2 --gres=gpu:v100:8
+mpirun -np 16 -H node_1:8,node_2:8 -bind-to none -map-by slot -x NCCL_DEBUG=INFO -x LD_LIBRARY_PATH -x PATH -mca pml ob1 -mca btl ^openib singularity exec --nv /ocean/containers/horovod/horovod_latest.sif python3 pt_horovod.py
 ```
 Please replace `node_1` and `node_2` with the node names (e.g., v005) assigned for your sessions.
 
 ##### With `singularity shell`
 ```bash
-interact --partition GPU-shared --gres=gpu:v100:4
-singularity shell --nv /ocean/containers/horovod/latest.sif
-mpirun -np 9 -H node_1:8,node_2:1 -bind-to none -map-by slot -x NCCL_DEBUG=INFO -x LD_LIBRARY_PATH -x PATH -mca pml ob1 -mca btl ^openib python3 pt_horovod.py
+interact --partition GPU --nodes 2 --gres=gpu:v100:8
+singularity shell --nv /ocean/containers/horovod/horovod_latest.sif
+mpirun -np 16 -H node_1:8,node_2:8 -bind-to none -map-by slot -x NCCL_DEBUG=INFO -x LD_LIBRARY_PATH -x PATH -mca pml ob1 -mca btl ^openib python3 pt_horovod.py
 ```
 Please replace `node_1` and `node_2` with the node names (e.g., v005) assigned for your sessions.
 #### Batch Mode
