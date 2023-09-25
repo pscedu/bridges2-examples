@@ -35,5 +35,5 @@ echo "Nodes assigned to the job with GPU counts: $NODELIST_WITH_GPUS"
 
 #running with a NGC container
 singularity exec --nv --bind /ocean/projects/pscstaff/mwang7,/ocean/datasets /ocean/containers/ngc/tensorflow/tensorflow_latest.sif pip install tensorflow_datasets
-mpirun -np 16 -H $NODELIST_WITH_GPUS -bind-to none -map-by slot -x LD_LIBRARY_PATH -x PATH -mca pml ob1 -mca btl ^openib singularity exec --nv /ocean/containers/ngc/tensorflow/latest.sif python3 tf_horovod.py
+mpirun -np 16 -H $NODELIST_WITH_GPUS -bind-to none -map-by slot -x LD_LIBRARY_PATH -x PATH -mca pml ob1 -mca btl ^openib singularity exec --nv /ocean/containers/ngc/tensorflow/tensorflow_latest.sif python3 tf_horovod.py
 
