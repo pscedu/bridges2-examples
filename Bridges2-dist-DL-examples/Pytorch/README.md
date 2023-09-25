@@ -23,11 +23,11 @@ Usage: pytorch_ddp.py [-h] [-bz BATCH_SIZE]
 
 
 Optional arguments:
-  -bz BATCH_SIZE           Sepcify the data batch size (default: 128).
+  -bz BATCH_SIZE           Sepcify the data batch size per replica (default: 128).
   -image_size IMAGE_SIZE   Resize the image size to be IMAGE_SIZE x IMAGE_SIZE  (default: 128).
   -epoch_num EPOCH_NUM     Number of training epochs (default: 5).
   -mp MP                   Enable mixed precision training or not (default: False).
-  -imagenet IMAGENET       Using Imagenet dataset for train or mock data generated with random pixels (default: False). 
+  -imagenet IMAGENET       Using Imagenet dataset for train or dummy data generated with random pixels (default: False). 
                 
 ```
 
