@@ -23,7 +23,7 @@ if gpus:
     tf.config.set_visible_devices(gpus[hvd.local_rank()], 'GPU')
 
 parser = argparse.ArgumentParser(description='Input values.')
-parser.add_argument('-bz', type=int, default=64, help='Batch size')
+parser.add_argument('-bz', type=int, default=64, help='Batch size per replica')
 parser.add_argument('-image_size', type=int, default=128, help='Image size')
 parser.add_argument('-epoch_num', type=int, default=5, help='Number of training epochs')
 parser.add_argument('-mp', action='store_true', help='Mixed Precision Training')
