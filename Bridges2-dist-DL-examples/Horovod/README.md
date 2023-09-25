@@ -38,14 +38,14 @@ Here we give example commands of running this example with 4 GPUs (node type not
 ##### With `singularity exec`
 ```bash
 interact --partition GPU-shared --gres=gpu:v100:4
-singularity exec --nv /ocean/containers/ngc/tensorflow/tensorflow_latest.sif horovodrun -np 4 tf_horovod.py
+singularity exec --nv /ocean/containers/ngc/tensorflow/tensorflow_latest.sif horovodrun -np 4 python3 tf_horovod.py
 ```
 
 ##### With `singularity shell`
 ```bash
 interact --partition GPU-shared --gres=gpu:v100:4
 singularity shell --nv /ocean/containers/ngc/tensorflow/tensorflow_latest.sif
-horovodrun -np 4 tf_horovod.py
+horovodrun -np 4 python3 tf_horovod.py
 ```
 #### Batch Mode
 After modifying the script to include the correct allocation account and working directory, submit the batch job by typing:
@@ -102,14 +102,14 @@ Here we give example commands of running this example with 4 GPUs (node type not
 ##### With `singularity exec`
 ```bash
 interact --partition GPU-shared --gres=gpu:v100:4
-singularity exec --nv /ocean/containers/horovod/horovod_latest.sif horovodrun -np 4 pt_horovod.py
+singularity exec --nv /ocean/containers/horovod/horovod_latest.sif horovodrun -np 4 python3 pt_horovod.py
 ```
 
 ##### With `singularity shell`
 ```bash
 interact --partition GPU-shared --gres=gpu:v100:4
 singularity shell --nv /ocean/containers/horovod/horovod_latest.sif
-horovodrun -np 4 pt_horovod.py
+horovodrun -np 4 python3 pt_horovod.py
 ```
 #### Batch Mode
 After modifying the script to include the correct allocation account and working directory, submit the batch job by typing:
