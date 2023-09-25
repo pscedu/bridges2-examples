@@ -34,4 +34,4 @@ echo "Nodes assigned to the job with GPU counts: $NODELIST_WITH_GPUS"
 ####
 
 #running with a NGC container
-mpirun -np 16 -H $NODELIST_WITH_GPUS -bind-to none -map-by slot -x LD_LIBRARY_PATH -x PATH -mca pml ob1 -mca btl ^openib singularity exec --nv /ocean/containers/horovod/horovod_latest.sif python3 pt_horovod.py
+mpirun -np 16 -H $NODELIST_WITH_GPUS -bind-to none -map-by slot -x LD_LIBRARY_PATH -x PATH -mca pml ob1 -mca btl ^openib singularity exec --nv /ocean/containers/horovod/latest.sif python3 pt_horovod.py
