@@ -55,7 +55,7 @@ if using_imagenet == True:
         transform=transform
     )
 else:
-    train_dataset = datasets.FakeData(12811, (3, image_size, image_size), 1000, transforms.ToTensor())
+    train_dataset = torchvision.datasets.FakeData(12811, (3, image_size, image_size), 1000, transforms.ToTensor())
 
 # Partition dataset among workers using DistributedSampler
 train_sampler = torch.utils.data.distributed.DistributedSampler(
