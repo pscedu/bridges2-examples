@@ -2,7 +2,7 @@
 #SBATCH -p GPU-shared
 #SBATCH -t 2:00:00
 #SBATCH --gpus=v100:4
-#SBATCH -J pt-horovod-resnet          # name of the job
+#SBATCH -J pt-horovod-single-node          # name of the job
 #SBATCH --account=xxxxxxx     #Please change it to your allocation ID
 
 set -x
