@@ -20,13 +20,14 @@ parser.add_argument('-bz', type=int, default=64, help='Batch size')
 parser.add_argument('-image_size', type=int, default=128, help='Image size')
 parser.add_argument('-epoch_num', type=int, default=3, help='Number of training epochs')
 parser.add_argument('-mp', action='store_true', help='Mixed Precision Training')
-parser.add_argument('-imagenet', action='store_true', help='Mixed Precision Training')
+parser.add_argument('-imagenet', action='store_true', help='Using Imagenet dataset')
 
 args = parser.parse_args()
 batch_size = args.bz
 n_workers = args.nw
 image_size = args.image_size
 mixed_precision = args.mp
+using_imagenet = args.imagenet
 epoch_num = args.epoch_num
 if rank == 0:
     print('n_workers=',n_workers)
@@ -45,11 +46,15 @@ transform = transforms.Compose([
     transforms.ToTensor(),
 ])
 
-# Load the ImageNet Object Localization Challenge dataset
-train_dataset = torchvision.datasets.ImageFolder(
-    root='/direcotry/to/imagenet-mini/train',
-    transform=transform
-)
+# Load the ImageNet dataset or create dummy data
+if using_imagenet == True: 
+    train_dataset = torchvision.datasets.ImageFolder(
+        root='/direcotry/to/imagenet-mini/train',
+        transform=transform
+    )
+else:
+    train_dataset = datasets.FakeData(12811, (3, image_size, image_size), 1000, transforms.ToTensor())
+    
 train_sampler = DistributedSampler(dataset=train_dataset, num_replicas=torch.cuda.device_count(), rank=rank,shuffle=True)
 train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=batch_size, num_workers=n_workers,pin_memory=True,sampler=train_sampler)
 
