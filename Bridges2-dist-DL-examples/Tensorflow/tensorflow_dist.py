@@ -21,9 +21,8 @@ epoch_num = args.epoch_num
 
 print('Batch size=',batch_size_per_replica,' (per replica)')
 print('Image size=',image_size)
-print('Number of Training Epochs:',epoch_num)
-print('Mixed precision training? ',mixed_precision)
-print("number of GPUs: ", len(tf.config.list_physical_devices('GPU')))
+print('Mixed precision training=',mixed_precision)
+print("Number of GPUs=", len(tf.config.list_physical_devices('GPU')))
 
 mirrored_strategy = tf.distribute.MirroredStrategy()
 batch_size = mirrored_strategy.num_replicas_in_sync * batch_size_per_replica
