@@ -33,8 +33,8 @@ if rank == 0:
     print('Number of workers=',n_workers)
     print('Batch size=',batch_size)
     print('Image size=',image_size)
-    print('Mixed precision training: ',mixed_precision)
-    print('Number of GPUs:',torch.cuda.device_count())
+    print('Mixed precision training=',mixed_precision)
+    print('Number of GPUs=',torch.cuda.device_count())
 device = torch.device('cuda' if torch.cuda.is_available() else "cpu")
 
 # Set hyperparameters
