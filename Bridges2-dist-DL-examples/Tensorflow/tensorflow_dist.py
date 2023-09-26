@@ -7,9 +7,9 @@ import argparse
 
 parser = argparse.ArgumentParser(description='Input values.')
 parser.add_argument('-bz', type=int, default=128, help='Batch size per replica')
-parser.add_argument('-image_size', type=int, default=128, help='Image size')
+parser.add_argument('-image_size', type=int, default=128, help='Image size (number of pixels per size)')
 parser.add_argument('-epoch_num', type=int, default=5, help='Number of training epochs')
-parser.add_argument('-mp', action='store_true', help='Mixed Precision Training')
+parser.add_argument('-mp', action='store_true', help='Mixed precision training')
 parser.add_argument('-imagenet', action='store_true', help='Using Imagenet dataset')
 
 args = parser.parse_args()
