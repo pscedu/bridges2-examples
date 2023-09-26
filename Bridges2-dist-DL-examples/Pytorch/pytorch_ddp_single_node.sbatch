@@ -7,6 +7,8 @@
 
 set -x
 
+cd /ocean/projects/groupname/username/path-to-directory
+
 singularity exec --nv /ocean/containers/ngc/pytorch/pytorch_latest.sif torchrun --nnodes=1 --nproc_per_nod=4 pytorch_ddp.py
 
 #Run with AI module enviroment
