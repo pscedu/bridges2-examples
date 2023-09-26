@@ -38,8 +38,8 @@ epoch_num = args.epoch_num
 if hvd.local_rank() == 0:
     print('Batch size=',batch_size)
     print('Image size=',image_size)
-    print('Number of training Epochs=',epoch_num)
     print('Mixed precision training=',mixed_precision)
+    print('Number of GPUs=',hvd.size())
 
 # Enable mixed precision training if assigned.
 if  mixed_precision:
