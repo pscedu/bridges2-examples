@@ -1,6 +1,7 @@
 #!/bin/bash
 #SBATCH -p GPU
 #SBATCH -N 2 
+#SBATCH -t 30:00
 #SBATCH --gpus=v100-32:16 
 #SBATCH -J tf_horovod_multi_nodes      # Name of the job
 #SBATCH --account=xxxxxxx              # Please change it to your allocation ID
