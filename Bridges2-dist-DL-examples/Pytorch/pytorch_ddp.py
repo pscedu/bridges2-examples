@@ -103,7 +103,7 @@ for epoch in range(epoch_num):
             optimizer.step()
 
     # Print the loss for every epoch
-    print(f'Epoch {epoch+1}/{epoch_num}, Loss: {loss.item():.4f})
+    print(f'Epoch {epoch+1}/{epoch_num}, Loss: {loss.item():.4f}')
 
 
 dist.destroy_process_group()
