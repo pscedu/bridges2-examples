@@ -40,7 +40,7 @@ if using_imagenet == True:
         image_size=(image_size, image_size),
         subset=None)
 else:
-    train_ds_input = tf.data.Dataset.from_tensor_slices((np.random.rand(2000,image_size,image_size,3), np.random.randint(1000,size=2000,dtype=tf.int32))).cache().repeat().batch(batch_size)
+    train_ds_input = tf.data.Dataset.from_tensor_slices((np.random.rand(2000,image_size,image_size,3), np.random.randint(1000,size=2000))).cache().batch(batch_size)
 
 with mirrored_strategy.scope():
     model = tf.keras.applications.resnet50.ResNet50(weights=None,input_shape=[image_size,image_size,3])
