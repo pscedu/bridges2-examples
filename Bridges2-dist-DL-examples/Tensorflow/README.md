@@ -18,16 +18,16 @@ If the flag `-imagenet` is not set (default), it will generate dummy images with
 Usage: tensorflow_dist.py [-h] [-bz BATCH_SIZE] 
                                [-image_size IMAGE_SIZE]
                                [-epoch_num EPOCH_NUM]
-                               [-mp MP]
-                               [-imagenet IMAGENET]
+                               [-mp]
+                               [-imagenet]
 
 
 Optional arguments:
   -bz BATCH_SIZE           Sepcify the data batch size per replica (default: 128).
   -image_size IMAGE_SIZE   Resize the image size to be IMAGE_SIZE x IMAGE_SIZE  (default: 128).
   -epoch_num EPOCH_NUM     Number of training epochs (default: 5).
-  -mp MP                   Enable mixed precision training or not (default: False).
-  -imagenet IMAGENET       Using Imagenet dataset for train or dummy data generated with random pixels (default: False). 
+  -mp                      Enable mixed precision training or not (default: False).
+  -imagenet                Using Imagenet dataset for train or dummy data generated with random pixels (default: False). 
                 
 ```
 
