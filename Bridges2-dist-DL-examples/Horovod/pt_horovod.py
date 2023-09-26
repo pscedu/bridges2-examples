@@ -16,12 +16,12 @@ if torch.cuda.is_available():
     torch.cuda.set_device(hvd.local_rank())
 
 parser = argparse.ArgumentParser(description='Input values.')
-parser.add_argument('-nw', type=int, default=10, help='number of workers in dataloader')
+parser.add_argument('-nw', type=int, default=10, help='Number of workers in dataloader')
 parser.add_argument('-bz', type=int, default=128, help='Batch size per replica')
-parser.add_argument('-image_size', type=int, default=128, help='Image size')
+parser.add_argument('-image_size', type=int, default=128, help='Image size (number of pixels per size)')
 parser.add_argument('-epoch_num', type=int, default=5, help='Number of training epochs')
-parser.add_argument('-mp', action='store_true', help='Mixed Precision Training')
-parser.add_argument('-imagenet', action='store_true', help='Using imagenet dataset')
+parser.add_argument('-mp', action='store_true', help='Mixed precision training')
+parser.add_argument('-imagenet', action='store_true', help='Using Imagenet dataset')
 
 args = parser.parse_args()
 batch_size = args.bz
@@ -32,11 +32,11 @@ epoch_num = args.epoch_num
 using_imagenet = args.imagenet
 
 if hvd.local_rank() == 0:
-    print('n_workers=',n_workers)
-    print('batch size=',batch_size)
-    print('image size=',image_size)
+    print('Number of workers=',n_workers)
+    print('Batch size=',batch_size)
+    print('Image size=',image_size)
     print('Mixed precision training: ',mixed_precision)
-    print('number of GPUs:',hvd.size())
+    print('Number of GPUs:',hvd.size())
 device = torch.device('cuda' if torch.cuda.is_available() else "cpu")
 
 # Set hyperparameters
