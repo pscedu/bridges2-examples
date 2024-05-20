@@ -1,0 +1,34 @@
+mlflow run https://github.com/mlflow/mlflow-example.git -P alpha=5.0
+
+    === Fetching project from https://github.com/mlflow/mlflow-example.git into /local/10485985/tmp/tmpx7y13aky ===
+    === Created directory /local/10485985/tmp/tmppzihmhdd for downloading remote URIs passed to arguments of type 'path' ===
+    Solving package specifications: .
+    binutils_impl_ 100% |#########################################| Time: 0:00:00  54.52 MB/s
+        Using cached mlflow-1.9.1-py3-none-any.whl (11.9 MB)
+    Collecting click>=7.0
+    Processing
+    2020/07/07 16:52:26 INFO mlflow.projects:
+    === Running command 'source activate mlflow-9d0b9dffa6380fb944ef1d9a99d52510b7ef8ac8 1>&2 && python train.py \
+    https://raw.githubusercontent.com/facebook/prophet/e21a05f4f9290649255a2a306855e8b4620816d7/examples/example_wp_log_peyton_manning.csv 0.1 \
+    --alpha 0.5' in run with ID 'c0e00dcfdd074807a32995518f63dcad' ===
+    Importing plotly failed. Interactive plots will not work.
+    INFO:fbprophet:Disabling daily seasonality. Run prophet with daily_seasonality=True to override this.
+    Initial log joint probability = -19.4685
+        Iter  	log prob    	||dx||  	||grad||   	alpha  	alpha0  # evals  Notes
+        99   	7975.37	0.00149529   	224.247       	1       	1  	128
+    [...]
+        366   	6980.77   2.53066e-07   	59.0031  	0.1701  	0.6407  	571
+    Optimization terminated normally:
+    Convergence detected: relative gradient magnitude is below tolerance
+    Prophet model (rolling_window=0.100000):
+    CV:
+            ds  	yhat  yhat_lower  yhat_upper     	y 	cutoff
+    [...]
+    4 2010-02-20  8.271228	7.803771	8.786342  7.745003 2010-02-15
+    Perf:
+    horizon   	mse  	rmse   	mae  	mape 	mdape  coverage
+    [...]
+    4 41 days  0.537706  0.733284  0.521008  0.060214  0.049672  0.696437
+    Logged model with URI: runs:/c0e00dcfdd074807a32995518f63dcad/model
+    2020/07/07 16:53:12 INFO mlflow.projects:
+    === Run (ID 'c0e00dcfdd074807a32995518f63dcad') succeeded ===
