@@ -21,7 +21,7 @@ Then, you click the “Launch” icon to submit the job.
 
 ## Interactive sessions
 
-Here, we fine tune the Llama-2 7B model for a single epoch with one V100 32GB GPU. Make sure you enter the the correct Bridges-2 directory for the `--output_dir` and `--model_name`.
+Here, we fine tune the Llama-2 7B model for a single epoch with one V100 32GB GPU. Make sure you enter the the correct Bridges-2 directory for the `--output_dir` and `--model_name`. Please enter the following commands once you ssh to Bridges-2 with a terminal:
 ```bash
 interact --partition GPU-shared --gres=gpu:v100-32:1
 singularity shell --nv /ocean/containers/ngc/pytorch/pytorch_latest.sif
@@ -29,7 +29,7 @@ pip install llama-recipes
 python3 -m llama_recipes.finetuning --use_peft --peft_method lora --num_epochs 1 --use_fp16 --use_wandb num_epochs 1 --quantization --model_name /your_project_dir/llama-2-7b-hf   --batch_size_training 1 --output_dir /your_project_dir/llama-2-7b-hf-finetuned
 ```
 
-Fine tuning the Llama-3 8B model for a single epoch with two V100 32GB GPUs using the FSDP method. Make sure you enter the the correct Bridges-2 directory for the `--output_dir` and `--model_name`.
+Fine tuning the Llama-3 8B model for a single epoch with two V100 32GB GPUs using the FSDP method. Make sure you enter the the correct Bridges-2 directory for the `--output_dir` and `--model_name`. Please enter the following commands once you ssh to Bridges-2 with a terminal:
 ```bash
 interact --partition GPU-shared --gres=gpu:v100-32:2
 singularity shell --nv /ocean/containers/ngc/pytorch/pytorch_latest.sif
