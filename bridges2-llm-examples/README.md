@@ -1,4 +1,4 @@
-# Bridges-2 examples for open source large language models
+# Bridges-2 examples for open large language models
 
 Here, we give some simple examples to start with Llama-2/Llama-3 and Gemma. Those examples are modified versions of examples in the [Llama-recipes](https://github.com/meta-llama/llama-recipes) and [Gemma website](https://ai.google.dev/gemma/docs) to accommodate machine configurations on Bridges-2. The configurations assume running jobs with NVIDIA V100 32GB GPUs (Bridges-2 V100-32 nodes). We also give some useful tips for running on Bridges-2, such as setting up a cache directory or addressing common issues with the environment setup.
 
